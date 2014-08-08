@@ -99,18 +99,8 @@ include_directories(
 # add_library(phoenix_description
 #   src/${PROJECT_NAME}/phoenix_description.cpp
 # )
-
-## Declare a cpp executable
-# add_executable(phoenix_description_node src/phoenix_description_node.cpp)
-
-## Add cmake target dependencies of the executable/library
-## as an example, message headers may need to be generated before nodes
-# add_dependencies(phoenix_description_node phoenix_description_generate_messages_cpp)
-
-## Specify libraries to link a library or executable target against
-# target_link_libraries(phoenix_description_node
-#   ${catkin_LIBRARIES}
-# )
+ add_executable(parser src/parser.cpp)
+ target_link_libraries(parser ${catkin_LIBRARIES})
 
 #############
 ## Install ##
