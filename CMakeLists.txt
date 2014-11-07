@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(phoenix_description)
+project(big_red_launch)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   urdf
+  robot_localization
 )
 
 ## System dependencies are found with CMake's conventions
@@ -80,10 +81,13 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES phoenix_description
-#  CATKIN_DEPENDS urdf
+  CATKIN_DEPENDS urdf robot_localization
 #  DEPENDS system_lib
 )
 
+
+add_executable(parser src/parser.cpp)
+target_link_libraries(parser ${catkin_LIBRARIES})
 ###########
 ## Build ##
 ###########
@@ -99,8 +103,8 @@ include_directories(
 # add_library(phoenix_description
 #   src/${PROJECT_NAME}/phoenix_description.cpp
 # )
- add_executable(parser src/parser.cpp)
- target_link_libraries(parser ${catkin_LIBRARIES})
+ #add_executable(parser src/parser.cpp)
+ #target_link_libraries(parser ${catkin_LIBRARIES})
 
 #############
 ## Install ##
@@ -136,7 +140,10 @@ include_directories(
 #   # myfile2
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
-
+install(
+  DIRECTORY launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
 #############
 ## Testing ##
 #############

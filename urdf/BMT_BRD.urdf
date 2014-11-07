@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<robot name="Phoenix">
+	<link name="base_link" />
+	<link name="base_y" />
+	<link name="base_p" />
+	<link name="base_r">
+		<visual>
+			<geometry>
+				<cylinder length="1.5" radius="0.4"/>
+			</geometry>
+			<material name="red">
+				<color rgba=".64 0 .1 1" />
+			</material>
+			<origin rpy="0 1.57 0 " xyz="0 0 0 " />
+		</visual>
+	</link>
+	<link name="stump">
+		<visual>
+			<geometry>
+				<box size="0.6 0.05 0.05" />
+			</geometry>
+			<material name="grey" >
+				<color rgba=".64 .64 .64 1" />
+			</material>
+			<origin xyz="0.3 0 0" rpy="0 0 0" />
+		</visual>
+	</link>
+	<link name="gripper">
+		<visual>
+			<geometry>
+				<cylinder length="0.15" radius="0.05"/>
+			</geometry>
+			<material name="grey" />
+			<origin xyz="0.075 0 0" rpy="0 1.57 0" />
+		</visual>
+	</link>
+	<link name="xsens_Mti30">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05" />
+			</geometry>
+			<material name="blue" >
+				<color rgba="0 0 .8 1"/>
+			</material>
+		</visual>
+	</link>		
+ 
+	<link name="IMU_Vectornav">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05" />
+			</geometry>
+			<material name="blue" />
+		</visual>
+	</link>		
+ 
+	<joint name="yaw" type="continuous">
+		<parent link="base_link" />
+		<child link="base_y" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+ 
+	<joint name="pitch" type="continuous">
+		<parent link="base_y" />
+		<child link="base_p" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="0 1 0" />
+		<limit effort="100.0" upper="90" lower="-90" velocity="90"/>
+		<safety_controller k_position="100" k_velocity="10" soft_lower_limit="-1.4" soft_upper_limit="1.4"/>
+	</joint>
+ 
+	<joint name="roll" type="continuous">
+		<parent link="base_p" />
+		<child link="base_r" />
+		<origin xyz="0 0 0" rpy="0 0 0" />	
+		<axis xyz="1 0 0" />	
+	</joint>
+ 
+	<joint name="stiff_shoulder" type="fixed">
+		<parent link="base_r" />
+		<child link="stump" />
+		<origin xyz="0 0 0" rpy="0 0 -1.57" />		
+		<axis xyz="0 0 0" />
+	</joint>
+ 
+	<joint name="wrist_rotate" type="continuous">
+		<parent link="stump" />
+		<child link="gripper" />
+		<origin xyz="0.6 0 0" rpy="0 0 0" />		
+		<axis xyz="1 0 0" />		
+	</joint>
+ 
+	<joint name="Joint_for_ADIS" type="fixed">
+		<parent link="base_r" />
+		<child link="xsens_Mti30" />
+		<origin xyz="0.2 0 .4" rpy="0 0 0" />
+		<axis xyz="0 0 0 " />
+	</joint>
+ 
+	<joint name="Joint_for_Vectornav" type="fixed">
+		<parent link="base_r" />
+		<child link="IMU_Vectornav" />
+		<origin xyz="0.3 0 0.4" rpy="0 0 0" />
+		<axis xyz="0 0 0 " />
+	</joint>	
+ 
+</robot>
+
+
