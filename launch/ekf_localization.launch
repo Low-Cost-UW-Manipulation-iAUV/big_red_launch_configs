@@ -51,9 +51,9 @@
       <!-- The filter accepts an arbitrary number of inputs from each input message type (Odometry, PoseStamped,
            TwistStamped, Imu). To add a new one, simply append the next number in the sequence to its base name,
            e.g., odom0, odom1, twist0, twist1, imu0, imu1, imu2, etc. The value should be the topic name. -->
-      <param name="odom0" value="example/imu_positioning"/> <!-- -->
-      <param name="odom1" value="example/sonar"/>      
-      <param name="pose0" value="example/pressure"/>
+      <param name="twist0" value="/xsens/velocity"/>      
+      <param name="pose0" value="/example/pressure"/>
+      <param name="pose1" value="/example/sonar"/>      
       <param name="imu0" value="/imu/data"/> 
 
       <!-- Each sensor reading updates some or all of the filter's state. These options give you greater control over
@@ -62,14 +62,9 @@
            The order of the values is x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw. Note that not some message
            types lack certain variables. For example, a TwistWithCovarianceStamped message has no pose information, so the first
            six values would be meaningless in that case. -->
-      <rosparam param="odom0_config">[true, true, true, 
+      <rosparam param="twist0_config">[false, false, false, 
                                       false, false, false, 
-                                      false,  false, false, 
-                                      false, false, false]</rosparam>
-
-      <rosparam param="odom1_config">[true, true, false, 
-                                      false, false, false, 
-                                      false,  false, false, 
+                                      true,  true, true, 
                                       false, false, false]</rosparam>
 
       <rosparam param="pose0_config">[false,  false,  true, 
@@ -77,12 +72,15 @@
                                       false, false, false, 
                                       false, false, false]</rosparam>
                                       
+      <rosparam param="pose1_config">[true, true, false, 
+                                     false,  false,  false, 
+                                     false, false, false, 
+                                     false,  false,  false]</rosparam>
+
       <rosparam param="imu0_config">[false, false, false, 
                                      true,  true,  true, 
                                      false, false, false, 
-                                     true,  true,  true,
-                                     true, true, true, 
-                                     false, false, false]</rosparam>
+                                     false,  false,  false]</rosparam>                                     
 
       <!-- The best practice for including new sensors in robot_localization's state estimation nodes is to pass in velocity 
            measurements and let the nodoes integrate them. However, this isn't always feasible, and so the state estimation
@@ -92,10 +90,22 @@
            to true. This will carry out differential integration of the sensor data, i.e., it will repeatedly integrate the 
            difference between a given measurement and the previous measurement from that sensor. 
            NOTE: this only applies to sensors that provide absolute measurements, so Twist messages are not supported. -->
-      <param name="odom0_differential" value="true"/>
-      <param name="odom1_differential" value="true"/>
-      <param name="pose0_differential" value="true"/>
-      <param name="imu0_differential" value="true"/>
+      <param name="twist0_differential"> [false, false, false,
+                                          false, false, false,
+                                          false, false, false,
+                                          false, false, false]</param>
+      <param name="pose0_differential">  [false, false, true,
+                                          false, false, false,
+                                          false, false, false,
+                                          false, false, false]</param>                                          
+      <param name="pose1_differential"> [true, true, false,
+                                          false, false, false,
+                                          false, false, false,
+                                          false, false, false]</param>   
+      <param name="imu0_differential"> [false, false, false,
+                                          true, true, true,
+                                          false, false, false,
+                                          false, false, false]</param>   
 
       <!-- If we're including accelerations in our state estimate, then we'll probably want to remove any acceleration that
            is due to gravity. If you don't want to, then set this to false. -->
@@ -103,7 +113,7 @@
 
       <!-- Debug settings. Not for the faint of heart. Outputs a ludicrous amount of information to the file
            specified by debug_out_file. I hope you like matrices! -->
-      <param name="debug"           value="false"/>
+      <param name="debug"           value="true"/>
       <param name="debug_out_file"  value="debug_ekf_localization.txt"/>
 
       <!-- The process noise covariance matrix can be difficult to tune, and can vary for each application, so it
