@@ -1,5 +1,9 @@
 <launch>
   <!-- urdf xml robot description loaded on the Parameter Server-->
   <param name="robot_description" textfile="$(find big_red_launch_configs)/urdf/BMT_BRD.urdf" />
-  <param name="publish_frequency" value="400" />
+
+  <!-- publish all the frames to TF -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+    <param name="publish_frequency" value="400"/> <!-- Hz -->
+  </node>  
 </launch>
