@@ -108,7 +108,7 @@
 
       <!-- Debug settings. Not for the faint of heart. Outputs a ludicrous amount of information to the file
            specified by debug_out_file. I hope you like matrices! -->
-      <param name="debug"           value="true"/>
+      <param name="debug"           value="false"/>
       <param name="debug_out_file"  value="debug_ekf_localization.txt"/>
 
       <!-- The process noise covariance matrix can be difficult to tune, and can vary for each application, so it
