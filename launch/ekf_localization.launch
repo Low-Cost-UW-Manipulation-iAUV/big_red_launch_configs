@@ -53,7 +53,8 @@
            e.g., odom0, odom1, twist0, twist1, imu0, imu1, imu2, etc. The value should be the topic name. -->
       <param name="twist0" value="xsens/velocity"/>      
       <param name="pose0" value="example/pressure"/>
-      <param name="pose1" value="example/sonar"/>      
+      <param name="pose1" value="/sonar/position/x"/>
+      <param name="pose2" value="/sonar/position/y"/>      
       <param name="imu0" value="imu/data"/> 
 
       <!-- Each sensor reading updates some or all of the filter's state. These options give you greater control over
@@ -74,11 +75,16 @@
                                       false, false, false,
                                       false, false, false]</rosparam>
                                       
-      <rosparam param="pose1_config">[true, true, false, <!-- Sonar x,y measurements -->
+      <rosparam param="pose1_config">[true, false, false, <!-- Sonar x measurements -->
                                      false,  false,  false, 
                                      false, false, false, 
                                      false,  false,  false,
                                      false, false, false]</rosparam>
+      <rosparam param="pose2_config">[false, true, false, <!-- Sonar y measurements -->
+                                     false,  false,  false, 
+                                     false, false, false, 
+                                     false,  false,  false,
+                                     false, false, false]</rosparam>                                     
 
       <rosparam param="imu0_config">[false, false, false, <!-- The Xsens MTi -->
                                      true,  true,  true, 
@@ -99,6 +105,8 @@
       <param name="pose0_differential" value="true"/>
 
       <param name="pose1_differential" value="true"/>
+
+      <param name="pose2_differential" value="true"/>
 
       <param name="imu0_differential" value="true"/>
 
