@@ -6,7 +6,6 @@ project(big_red_launch_configs)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   urdf
-  robot_localization
 )
 
 ## System dependencies are found with CMake's conventions
@@ -81,7 +80,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES phoenix_description
-  CATKIN_DEPENDS urdf robot_localization
+  CATKIN_DEPENDS urdf
 #  DEPENDS system_lib
 )
 
