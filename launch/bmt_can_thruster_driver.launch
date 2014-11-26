@@ -1,0 +1,6 @@
+<launch>
+	<node name="motors" pkg="motor_driver" type="motor_driver_node" args="/dev/can1 230400">
+		<param name="threshold" value="10.0" type="double" />
+		<param name="low_bound" value="2.0" type="double" />
+  </node>
+</launch>
