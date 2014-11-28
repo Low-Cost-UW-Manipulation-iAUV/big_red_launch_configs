@@ -1,0 +1,3 @@
+<launch>
+	<node name="valeport_svs" pkg="uwesub_svs" type="svs" args="/dev/ttyUSB0 19200" output="screen" />
+</launch>

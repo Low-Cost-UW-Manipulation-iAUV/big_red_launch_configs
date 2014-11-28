@@ -52,7 +52,7 @@
            TwistStamped, Imu). To add a new one, simply append the next number in the sequence to its base name,
            e.g., odom0, odom1, twist0, twist1, imu0, imu1, imu2, etc. The value should be the topic name. -->
       <param name="twist0" value="xsens/velocity"/>      
-      <param name="pose0" value="example/pressure"/>
+      <param name="pose0" value="/svs/depth"/>
       <param name="pose1" value="/sonar/position/x"/>
       <param name="pose2" value="/sonar/position/y"/>      
       <param name="imu0" value="imu/data"/> 

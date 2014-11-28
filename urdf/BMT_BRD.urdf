@@ -40,8 +40,7 @@
 				<color rgba="0 0 .8 1"/>
 			</material>
 		</visual>
-	</link>		
- 
+	</link>		 
 	<link name="IMU_Vectornav">
 		<visual>
 			<geometry>
@@ -50,6 +49,14 @@
 			<material name="blue" />
 		</visual>
 	</link> 
+	<link name="SVS_link">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05" />
+			</geometry>
+			<material name="blue" />
+		</visual>
+	</link> 	
 	<joint name="stiff_shoulder" type="fixed">
 		<parent link="base_link" />
 		<child link="stump" />
@@ -77,7 +84,14 @@
 		<origin xyz="0.3 0 0.4" rpy="0 0 0" />
 		<axis xyz="0 0 0 " />
 	</joint>	
- 
+ 	
+ 	<joint name="Joint_for_SVS" type="fixed">
+		<parent link="base_link" />
+		<child link="SVS_link" />
+		<origin xyz="0.3 0 0.4" rpy="0 0 0" />
+		<axis xyz="0 0 0 " />
+	</joint>
+
 </robot>
 
 
