@@ -10,7 +10,7 @@ rsync -avzh *.md								BBB_BRLWIFI:/home/ubuntu/uwesub_catkin_workspace/src/big
 rsync -avzh ./urdf/*.urdf						BBB_BRLWIFI:/home/ubuntu/uwesub_catkin_workspace/src/big_red_launch_configs/urdf/
 
 rsync -avzh ../support_auv						BBB_BRLWIFI:/home/ubuntu/uwesub_catkin_workspace/src/
-rsync -avzh ../support_messages					BBB_BRLWIFI:/home/ubuntu/uwesub_catkin_workspace/src/
+rsync -avzh ../support_msgs						BBB_BRLWIFI:/home/ubuntu/uwesub_catkin_workspace/src/
 rsync -avzh ../support_library					BBB_BRLWIFI:/home/ubuntu/uwesub_catkin_workspace/src/
 
 echo "All done, Good Success!"

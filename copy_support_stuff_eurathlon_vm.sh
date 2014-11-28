@@ -10,7 +10,7 @@ rsync -avzh *.md								eurathlon_vm:/home/euratlhon/uwesub_msc/src/big_red_laun
 rsync -avzh ./urdf/*.urdf						eurathlon_vm:/home/euratlhon/uwesub_msc/src/big_red_launch_configs/urdf/
 
 rsync -avzh ../support_auv						eurathlon_vm:/home/euratlhon/uwesub_msc/src/
-rsync -avzh ../support_messages					eurathlon_vm:/home/euratlhon/uwesub_msc/src/
+rsync -avzh ../support_msgs						eurathlon_vm:/home/euratlhon/uwesub_msc/src/
 rsync -avzh ../support_library					eurathlon_vm:/home/euratlhon/uwesub_msc/src/
 
 echo "All done, Good Success!"
