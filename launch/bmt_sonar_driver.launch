@@ -1,0 +1,3 @@
+<launch>
+  	<node name="sonar" pkg="micron_driver" type="micron_driver_node" args="/dev/ttyUSB0 115200" respawn="true"/-->
+</launch>
