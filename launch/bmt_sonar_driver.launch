@@ -1,5 +1,5 @@
-<!--Arguments are : device_address desired_baud range(m) numberofbins speed_of_sound  -->
+<!--Arguments are : device_address1 device_address2 desired_baud range(m) numberofbins speed_of_sound  -->
 
 <launch>
-  	<node name="sonar" pkg="micron_driver" type="micron_driver_node" args="/dev/ttyUSB0 115200 6 212 1500" respawn="true" output="screen" />
+  	<node name="sonar" pkg="micron_driver" type="micron_driver_node" args="/dev/ttyUSB0 /dev/ttyUSB1 115200 6 211 1500" respawn="true" output="screen" />
 </launch>

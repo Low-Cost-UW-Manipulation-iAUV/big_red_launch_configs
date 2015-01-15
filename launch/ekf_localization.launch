@@ -110,6 +110,12 @@
 
       <param name="imu0_differential" value="true"/>
 
+      
+      <!-- Threshold for outliers - defined in Mahalanobis Distance-->
+      <param name="pose1_rejection_threshold" value="500"/>
+
+      <param name="pose2_rejection_threshold" value="500"/>
+
       <!-- If we're including accelerations in our state estimate, then we'll probably want to remove any acceleration that
            is due to gravity. If you don't want to, then set this to false. -->
       <param name="remove_gravitational_acceleration" value="false"/>
