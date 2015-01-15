@@ -1,0 +1,19 @@
+<launch>
+  <group name="core">
+    <include file="$(find big_red_launch_configs)/load_BRD_urdf.launch " />
+    <include file="$(find big_red_launch_configs)/ekf_localization.launch" />
+  </group>
+
+  <group name="imu">
+    <include file="$(find xsens_driver)/xsens_driver.launch " />
+    <include file="$(find imu_positioning)/imu_positioning.launch " />
+  </group>
+
+  <group name="sonar">
+    <include file="$(find big_red_launch_configs)/bmt_sonar_driver.launch" />
+    <include file="$(find sonar_positioning)/sonar_positioning.launch" />
+    <include file="$(find big_red_launch_configs)/valeport_svs.launch" />
+  </group>
+  
+</launch>
+
