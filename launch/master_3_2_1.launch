@@ -12,7 +12,7 @@
   <group name="sonar">
     <include file="$(find big_red_launch_configs)/launch/bmt_sonar_driver.launch" />
     <include file="$(find sonar_positioning)/launch/sonar_positioning.launch" />
-    <include file="$(find big_red_launch_configs)/launch/valeport_svs.launch" />
+    <!-- <include file="$(find big_red_launch_configs)/launch/valeport_svs.launch" /> -->
   </group>
   
 </launch>
