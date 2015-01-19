@@ -49,30 +49,8 @@
 			<material name="blue" />
 		</visual>
 	</link> 
-	<link name="SVS_link">
-		<visual>
-			<geometry>
-				<box size="0.05 0.05 0.05" />
-			</geometry>
-			<material name="blue" />
-		</visual>
-	</link>
-	<link name="SONAR_UWESUB">
-		<visual>
-			<geometry>
-				<box size="0.05 0.05 0.05" />
-			</geometry>
-			<material name="blue" />
-		</visual>
-	</link> 
-	<link name="SONAR_BMT">
-		<visual>
-			<geometry>
-				<box size="0.05 0.05 0.05" />
-			</geometry>
-			<material name="blue" />
-		</visual>
-	</link> 				
+
+
 	<joint name="stiff_shoulder" type="fixed">
 		<parent link="base_link" />
 		<child link="stump" />
@@ -99,26 +77,78 @@
 		<child link="IMU_Vectornav" />
 		<origin xyz="0.3 0 0.4" rpy="0 0 0" />
 		<axis xyz="0 0 0 " />
-	</joint>	
+	</joint>
+		
+<!--	<link name="SVS">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05" />
+			</geometry>
+			<material name="blue" />
+		</visual>
+	</link>
+	<link name="SONAR_UWESUB">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05" />
+			</geometry>
+			<material name="blue" />
+		</visual>
+	</link> 
+	<link name="SONAR_BMT">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05" />
+			</geometry>
+			<material name="blue" />
+		</visual>
+	</link>
+	<link name="SVS_mount">
+	</link>		
+	<link name="SONAR_UWESUB_mount">
+	</link> 
+	<link name="SONAR_BMT_mount">
+	</link> -->
+
+
  	
- 	<joint name="Joint_for_SVS" type="fixed">
-		<parent link="base_link" />
-		<child link="SVS_link" />
-		<origin xyz="0.3 0 0.4" rpy="0 0 0" />
+ 	<!-- Absolute Data from the two SONARs and the SVS --> 
+	<!-- SONAR and SVS will need a dynamic transform 'odom->xxx_base' published somewhere -->
+
+<!--	<joint name="Joint_for_SVS_mounting_position" type="fixed">
+		<parent link="SVS" />
+		<child link="SVS_mount" />
+		<origin xyz="0.0 0 0.0" rpy="0 0 0" />
 		<axis xyz="0 0 0 " />
 	</joint>
- 	<joint name="Joint_SONAR_UWESUB" type="fixed">
-		<parent link="base_link" />
-		<child link="SONAR_UWESUB" />
-		<origin xyz="0.3 0 0.4" rpy="0 0 0" />
+
+ 	<joint name="Joint_SONAR_UWESUB_mounting_position" type="fixed">
+		<parent link="SONAR_UWESUB" />
+		<child link="SONAR_UWESUB_mount" />
+		<origin xyz="0.0 0 0.0" rpy="0 0 0" />
 		<axis xyz="0 0 0 " />
 	</joint>
- 	<joint name="JOINT_SONAR_BMT" type="fixed">
-		<parent link="base_link" />
-		<child link="SONAR_BMT" />
+ 	<joint name="JOINT_SONAR_BMT_mounting_position" type="fixed">
+		<parent link="SONAR_BMT" />
+		<child link="SONAR_BMT_mount" />
 		<origin xyz="0.3 0 0.4" rpy="0 0 0" />
 		<axis xyz="0 0 0 " />
-	</joint>		
+	</joint> -->
+
+<!-- I think I have to publish them with the message it self
+ 	<joint name="Joint_SONAR_UWESUB_beam" type="fixed">
+		<parent link="SONAR_UWESUB_base" />
+		<child link="SONAR_UWESUB_beam" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="0 0 0 " />
+	</joint>
+ 	<joint name="JOINT_SONAR_BMT_beam" type="fixed">
+		<parent link="SONAR_BMT_base" />
+		<child link="SONAR_BMT_beam" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="0 0 0 " />
+	</joint>	
+	-->		
 
 </robot>
 

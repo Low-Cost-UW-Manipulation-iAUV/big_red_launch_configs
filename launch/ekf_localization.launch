@@ -53,14 +53,22 @@
            e.g., odom0, odom1, twist0, twist1, imu0, imu1, imu2, etc. The value should be the topic name. -->
       <param name="twist0" value="xsens/velocity"/>      
       <param name="pose0" value="/svs/depth"/>
-      <param name="pose1" value="/sonar/position/x"/>
-      <param name="pose2" value="/sonar/position/y"/>      
+      <param name="pose1" value="/sonar/position0"/>
+      <param name="pose2" value="/sonar/position1"/>      
       <param name="imu0" value="imu/data"/> 
 
       <!-- Each sensor reading updates some or all of the filter's state. These options give you greater control over
            which values from each measurement are fed to the filter. For example, if you have an odometry message as input,
            but only want to use its Z position value, then set the entire vector to false, except for the third entry.
-           The order of the values is x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw. Note that not some message
+           The order of the values is 
+           
+           [x, y, z, 
+           roll, pitch, yaw, 
+           vx, vy, vz, 
+           vroll, vpitch, vyaw,
+           xacc, yacc, zacc]
+
+           Note that not some message
            types lack certain variables. For example, a TwistWithCovarianceStamped message has no pose information, so the first
            six values would be meaningless in that case. -->
       <rosparam param="twist0_config">[false, false, false, <!-- Velocity from imu_positioning -->
@@ -80,6 +88,7 @@
                                      false, false, false, 
                                      false,  false,  false,
                                      false, false, false]</rosparam>
+                                     
       <rosparam param="pose2_config">[false, true, false, <!-- Sonar y measurements -->
                                      false,  false,  false, 
                                      false, false, false, 
@@ -112,9 +121,9 @@
 
       
       <!-- Threshold for outliers - defined in Mahalanobis Distance-->
-      <param name="pose1_rejection_threshold" value="500"/>
+     <!--<param name="pose1_rejection_threshold" value="500"/>-->
 
-      <param name="pose2_rejection_threshold" value="500"/>
+      <!--<param name="pose2_rejection_threshold" value="500"/>-->
 
       <!-- If we're including accelerations in our state estimate, then we'll probably want to remove any acceleration that
            is due to gravity. If you don't want to, then set this to false. -->
