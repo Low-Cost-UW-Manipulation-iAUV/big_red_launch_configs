@@ -11,6 +11,55 @@
 			<origin rpy="0 1.57 0 " xyz="0 0 0 " />
 		</visual>
 	</link>
+	<link name="base_yaw" />
+	<link name="base_pitch" />
+	<link name="base_roll" />
+	<link name="base_x" />
+	<link name="base_y" />
+	<link name="base_z" />
+ 
+	<joint name="x" type="fixed">
+		<parent link="base_link" />
+		<child link="base_x" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+	</joint>
+	 
+	<joint name="y" type="fixed">
+		<parent link="base_x" />
+		<child link="base_y" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="0 1 0" />
+	</joint>
+ 
+	<joint name="z" type="fixed">
+		<parent link="base_y" />
+		<child link="base_z" />
+		<origin xyz="0 0 0" rpy="0 0 0" />	
+		<axis xyz="0 0 1" />	
+	</joint>
+ 
+	<joint name="yaw" type="continuous">
+		<parent link="base_z" />
+		<child link="base_yaw" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+ 
+	<joint name="pitch" type="continuous">
+		<parent link="base_yaw" />
+		<child link="base_pitch" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="0 1 0" />
+	</joint>
+ 
+	<joint name="roll" type="continuous">
+		<parent link="base_pitch" />
+		<child link="base_roll" />
+		<origin xyz="0 0 0" rpy="0 0 0" />	
+		<axis xyz="1 0 0" />	
+	</joint>
+
 	<link name="stump">
 		<visual>
 			<geometry>
