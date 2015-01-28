@@ -18,25 +18,32 @@
 	<link name="base_y" />
 	<link name="base_z" />
  
-	<joint name="x" type="fixed">
+
+	<joint name="x" type="continuous">
 		<parent link="base_link" />
 		<child link="base_x" />
 		<origin xyz="0 0 0" rpy="0 0 0" />
 		<axis xyz="1 0 0" />
+		<limit velocity="0.3" effort="30" />
+		<safety_controller k_velocity="10" soft_lower_limit="0.1" soft_upper_limit="0.9"/>
 	</joint>
 	 
-	<joint name="y" type="fixed">
+	<joint name="y" type="continuous">
 		<parent link="base_x" />
 		<child link="base_y" />
 		<origin xyz="0 0 0" rpy="0 0 0" />
 		<axis xyz="0 1 0" />
+		<limit velocity="0.3" effort="30" />
+		<safety_controller k_position="100" k_velocity="10" soft_lower_limit="0.1" soft_upper_limit="0.9"/>		
 	</joint>
  
-	<joint name="z" type="fixed">
+	<joint name="z" type="continuous">
 		<parent link="base_y" />
 		<child link="base_z" />
 		<origin xyz="0 0 0" rpy="0 0 0" />	
-		<axis xyz="0 0 1" />	
+		<axis xyz="0 0 1" />
+		<limit velocity="0.3" effort="30" />
+		<safety_controller k_position="100" k_velocity="10" soft_lower_limit="0.1" soft_upper_limit="0.9"/>		
 	</joint>
  
 	<joint name="yaw" type="continuous">
@@ -44,22 +51,80 @@
 		<child link="base_yaw" />
 		<origin xyz="0 0 0" rpy="0 0 0" />
 		<axis xyz="0 0 1" />
+		<limit velocity="0.147" effort="50" />
+		<safety_controller k_velocity="10" soft_lower_limit="0.1" soft_upper_limit="0.9"/>		
 	</joint>
  
-	<joint name="pitch" type="continuous">
+	<joint name="pitch" type="revolute">
 		<parent link="base_yaw" />
 		<child link="base_pitch" />
 		<origin xyz="0 0 0" rpy="0 0 0" />
 		<axis xyz="0 1 0" />
+		<limit lower="-1.39" upper="1.39" velocity="0.147" effort="50" />
+		<safety_controller k_position="100" k_velocity="10" soft_lower_limit="0.1" soft_upper_limit="0.9"/>
 	</joint>
  
 	<joint name="roll" type="continuous">
 		<parent link="base_pitch" />
 		<child link="base_roll" />
 		<origin xyz="0 0 0" rpy="0 0 0" />	
-		<axis xyz="1 0 0" />	
+		<axis xyz="1 0 0" />
+		<limit lower="-1.39" upper="1.39" velocity="0.147" effort="50" />
+		<safety_controller k_position="100" k_velocity="10" soft_lower_limit="0.1" soft_upper_limit="0.9"/>		
 	</joint>
 
+	<link name="surge_thruster">
+		<limit effort="35" />		
+	</link>
+	<link name="front_yaw_thruster">
+		<limit effort="28.4" />		
+	</link>
+	<link name="stern_yaw_thruster">
+		<limit effort="28.4" />		
+	</link>
+	<link name="front_pitch_thruster">
+		<limit effort="28.4" />		
+	</link>
+	<link name="stern_pitch_thruster">
+		<limit effort="28.4" />		
+	</link>
+
+
+	<joint name="surge_thruster_joint" type="continuous">
+		<parent link="base_link" />
+		<child link="surge_thruster" />
+		<origin xyz="-1.8 0 0" rpy="0 0 0" />
+		<axis xyz="1 0 0" />		
+	</joint>
+
+	<joint name="front_yaw_thruster_joint" type="continuous">
+		<parent link="base_link" />
+		<child link="front_yaw_thruster" />
+		<origin xyz="1.6 0 0" rpy="0 0 1.571" />
+		<axis xyz="1 0 0" />		
+	</joint>
+
+	<joint name="stern_yaw_thruster_joint" type="continuous">
+		<parent link="base_link" />
+		<child link="stern_yaw_thruster" />
+		<origin xyz="-1.6 0 0" rpy="0 0 1.571" />
+		<axis xyz="1 0 0" />		
+	</joint>
+
+	<joint name="front_pitch_thruster_joint" type="continuous">
+		<parent link="base_link" />
+		<child link="front_pitch_thruster" />
+		<origin xyz="1.5 0 0" rpy="0 1.571 0" />
+		<axis xyz="1 0 0" />		
+	</joint>
+
+	<joint name="stern_pitch_thruster_joint" type="continuous">
+		<parent link="base_link" />
+		<child link="stern_pitch_thruster" />
+		<origin xyz="-1.5 0 0" rpy="0 1.57 0" />
+		<axis xyz="1 0 0" />
+	</joint>
+	
 	<link name="stump">
 		<visual>
 			<geometry>
