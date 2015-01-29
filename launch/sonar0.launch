@@ -1,5 +1,0 @@
-<!--Arguments are : Devicename as in yaml  -->
-
-<launch>
-  	<node name="sonar0" pkg="micron_driver" type="micron_driver_node" args="sonar0" respawn="true" output="screen" />
-</launch>

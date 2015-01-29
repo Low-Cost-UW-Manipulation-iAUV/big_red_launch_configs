@@ -1,7 +1,7 @@
 <launch>
-    <rosparam command="load" file="$(find micron_driver)/micron_driver.yaml" />
-  <group name="sonars">
-    <include file="$(find big_red_launch_configs)/launch/sonar0.launch" />
-    <include file="$(find big_red_launch_configs)/launch/sonar1.launch" />
-  </group>
+	<rosparam command="load" file="$(find micron_driver)/micron_driver.yaml" />
+  	<group name="sonars">
+    	<include file="$(find big_red_launch_configs)/launch/sonarBMT.launch" />
+    	<include file="$(find big_red_launch_configs)/launch/sonarUWE.launch" />
+  	</group>
 </launch>
