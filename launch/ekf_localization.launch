@@ -111,7 +111,7 @@
            NOTE: this only applies to sensors that provide absolute measurements, so Twist messages are not supported. -->
       <param name="twist0_differential" value="false"/> 
 
-      <param name="pose0_differential" value="true"/>
+      <param name="pose0_differential" value="false"/>
 
       <param name="pose1_differential" value="true"/>
 
