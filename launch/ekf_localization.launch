@@ -117,7 +117,7 @@
 
       <param name="pose2_differential" value="true"/>
 
-      <param name="imu0_differential" value="true"/>
+      <param name="imu0_differential" value="false"/>
 
       
       <!-- Threshold for outliers - defined in Mahalanobis Distance-->
