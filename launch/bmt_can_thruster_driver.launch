@@ -1,6 +1,5 @@
 <launch>
+	<rosparam command="load" file="$(find motor_driver)/thrusters.yaml" />
 	<node name="motors" pkg="motor_driver" type="motor_driver_node" args="/dev/ttyUSB_CAN 230400" output="screen" >
-		<param name="threshold" value="10.0" type="double" />
-		<param name="low_bound" value="2.0" type="double" />
   </node>
 </launch>
