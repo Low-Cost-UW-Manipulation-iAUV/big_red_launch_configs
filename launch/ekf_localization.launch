@@ -53,8 +53,8 @@
            e.g., odom0, odom1, twist0, twist1, imu0, imu1, imu2, etc. The value should be the topic name. -->
       <param name="twist0" value="xsens/velocity"/>      
       <param name="pose0" value="/svs/depth"/>
-      <param name="pose1" value="/sonar/position0"/>
-      <param name="pose2" value="/sonar/position1"/>      
+      <param name="pose1" value="/sonar/positionUWE"/>
+      <param name="pose2" value="/sonar/positionBMT"/>      
       <param name="imu0" value="imu/data"/> 
 
       <!-- Each sensor reading updates some or all of the filter's state. These options give you greater control over
