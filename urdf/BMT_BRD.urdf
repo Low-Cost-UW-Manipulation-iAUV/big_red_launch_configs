@@ -17,7 +17,6 @@
 	<link name="base_x" />
 	<link name="base_y" />
 	<link name="base_z" />
- 
 
 	<joint name="x" type="continuous">
 		<parent link="base_link" />
