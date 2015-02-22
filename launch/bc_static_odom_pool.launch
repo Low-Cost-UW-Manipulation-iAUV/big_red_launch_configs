@@ -1,0 +1,5 @@
+<!-- Publishes a static transform (valid even if days old) from odom to pool. It is nothing else than the yaw rotation from north to the pool frame
+		This is in rad: 2.5539479816 rad = 146.3304404385931°  -->
+<launch>
+<node pkg="tf" type="static_transform_publisher" name="pool_frame_broadcaster" args="0 0 0 2.5539479816  0 0 odom pool 10" />
+</launch>

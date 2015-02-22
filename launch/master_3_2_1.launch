@@ -6,14 +6,13 @@
 
   <group name="imu">
     <include file="$(find xsens_driver)/launch/xsens_driver.launch" />
-    <include file="$(find imu_positioning)/launch/imu_positioning.launch" />
-  </group>
-
-  <group name="sonar">
-    <include file="$(find big_red_launch_configs)/launch/bmt_sonar_driver.launch" />
-    <include file="$(find sonar_positioning)/launch/sonar_positioning.launch" />
     <include file="$(find big_red_launch_configs)/launch/valeport_svs.launch" />
   </group>
+
+  <!--<group name="sonar">
+    <include file="$(find big_red_launch_configs)/launch/bmt_sonar_driver.launch" />
+    <include file="$(find sonar_positioning)/launch/sonar_positioning.launch" />
+  </group>-->
   
 </launch>
 

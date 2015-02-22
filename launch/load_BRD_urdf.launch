@@ -5,5 +5,7 @@
   <!-- publish all the frames to TF -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" >
     <param name="publish_frequency" value="400"/> <!-- Hz -->
-  </node>  
+  </node>
+  <include file="$(find big_red_launch_configs)/launch/bc_static_odom_pool.launch" />
+
 </launch>
